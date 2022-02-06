@@ -6,8 +6,6 @@ public class Articulo {
   private String nombreArticulo;
   private String description;
 
-  Scanner entrada = new Scanner(System.in);
-
   public Articulo(double valorArticulo, String nombreArticulo, String description) {
     this.valorArticulo = valorArticulo;
     this.nombreArticulo = nombreArticulo;
@@ -17,7 +15,7 @@ public class Articulo {
   @Override
   public String toString() {
     return "Articulo{" +
-        "valorArticulo=" + valorArticulo +
+        "valorArticulo= $" + valorArticulo +
         ", nombreArticulo='" + nombreArticulo + '\'' +
         ", description='" + description + '\'' +
         '}';

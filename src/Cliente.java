@@ -7,7 +7,7 @@ public class Cliente {
   private int cedula;
   private int numeroLocalizar;
 
-  static ArrayList<Articulo> articulos = new ArrayList();
+  ArrayList<Articulo> articulo = new ArrayList<Articulo>();
 
   public Cliente(String nombreCliente, String paisCliente, int cedula, int numeroLocalizar) {
     this.nombreCliente = nombreCliente;
@@ -25,6 +25,7 @@ public class Cliente {
         ", numeroLocalizar=" + numeroLocalizar +
         '}';
   }
+
 
   public String getNombreCliente() {
     return nombreCliente;
@@ -57,4 +58,5 @@ public class Cliente {
   public void setNumeroLocalizar(int numeroLocalizar) {
     this.numeroLocalizar = numeroLocalizar;
   }
+
 }
