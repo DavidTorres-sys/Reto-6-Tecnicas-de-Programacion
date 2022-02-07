@@ -1,90 +1,76 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
+
   public static void main(String[] args){
     int opcion;
     int opcionAgregar;
     int AgregarArticulos;
 
     ArrayList<Cliente> clientes = new ArrayList<>();
-    ArrayList<Articulo> articulos = new ArrayList<>();
-    do{
-      System.out.println("1. Agregar/Quitar Clientes");
-      System.out.println("2. Agregar/Quitar Articulos");
+    ArrayList<Articulo> articulos = new ArrayList<Articulo>();
+    ArrayList<Banco> listaCuentas = new ArrayList<Banco>();
 
-      System.out.print("Ingrese una Opcion: ");
-      opcion = Banco.input.nextInt();
+    Articulo articulo = new Articulo(0, "", "");
+    Cliente cliente = new Cliente("","", 0, 0);
+    Banco banco = new Banco("Inicia");
 
-      switch(opcion){
-        case 1:
-          do {
-            System.out.println("1. Agregar Clientes");
-            System.out.println("2. Quitar Clientes");
-            System.out.print("Ingrese una Opcion: ");
-            opcionAgregar = Banco.input.nextInt();
-            switch(opcionAgregar){
-              case 1:
-              System.out.print("Ingrese el Nombre del Cliente: ");
-              Banco.input.nextLine();
-              String nombreCliente = Banco.input.nextLine();
+    Scanner entrada = new Scanner(System.in);
+      do {
+        System.out.println("1. Agregar/Quitar Clientes");
+        System.out.println("2. Agregar/Quitar Articulos");
 
-              System.out.print("Ingrese el Pais del Cliente: ");
-              String paisCliente = Banco.input.nextLine();
+        System.out.print("Ingrese una Opcion: ");
+        opcion = entrada.nextInt();
 
-              System.out.print("Ingrese la Cedula del Cliente: ");
-              int cedula = Banco.input.nextInt();
-
-              System.out.print("Ingrese el Numero Localizador del Cliente: ");
-              int numeroLocalizar = Banco.input.nextInt();
-
-              Cliente cliente= new Cliente(nombreCliente, paisCliente, cedula, numeroLocalizar);
-              clientes.add(cliente);
+        switch (opcion) {
+          case 1:
+            do {
+              System.out.println("1. Agregar Clientes");
+              System.out.println("2. Quitar Clientes");
+              System.out.println("3. Consultar Clientes");
+              System.out.print("Ingrese una Opcion: ");
+              opcionAgregar = entrada.nextInt();
+              switch (opcionAgregar) {
+                case 1:
+                  System.out.println("Clientes (Presione Enter para continuar)");
+                  cliente.agregarClientes(entrada.nextLong(), clientes);
+                  System.out.println(cliente);
+                  break;
+                case 2:
+                  System.out.println("Ingrese el número de cuenta que desea eliminar");
+                  banco.eliminarCuenta(entrada.nextLong(), listaCuentas);
+                  break;
+                case 3:
+                  System.out.println("Ingrese la clave de su cuenta para consultar sus datos");
+                  banco.consultarCuenta(entrada.nextLong(), listaCuentas);
+                break;
+              }
+              System.out.println(clientes);
               break;
-              case 2:
-                int eliminar = 0;
-                System.out.println(clientes);
-                System.out.print("Que Cliente Desea Eliminar: ");
-                eliminar = Banco.input.nextInt();
-                clientes.remove(eliminar);
-                break;
-            }
-            System.out.println(clientes);
+            } while (opcionAgregar < 1 || opcionAgregar > 2);
+          case 2:
+            do {
+              System.out.println("1. Agregar Articulos");
+              System.out.println("2. Quitar Articulos");
+              System.out.print("Ingrese una Opcion: ");
+              AgregarArticulos = entrada.nextInt();
+              switch (AgregarArticulos) {
+                case 1 -> {
+                  System.out.println("Articulos (Presione 1 para continuar)");
+                  articulo.agregarArticulo(entrada.nextLong(), articulos);
+                  System.out.println(articulos);
+                }
+                case 2 -> {
+                  System.out.print("Ingrese el nombre del articulo a eliminar: ");
+                  articulo.eliminarArticulo(entrada.nextLine(), articulos);
+                }
+              }
+              break;
+            } while (AgregarArticulos < 1 || AgregarArticulos > 2);
             break;
-          }while(opcionAgregar<1||opcionAgregar>2);
-        case 2:
-          do{
-            System.out.println("1. Agregar Articulos");
-            System.out.println("2. Quitar Articulos");
-            System.out.print("Ingrese una Opcion: ");
-            AgregarArticulos = Banco.input.nextInt();
-            switch(AgregarArticulos){
-              case 1:
-                System.out.print("Ingrese el Valor del Articulo: ");
-                double valorArticulo = Banco.input.nextDouble();
-
-                System.out.print("Ingrese el Nombre del Articulo: ");
-                Banco.input.nextLine();
-                String nombreArticulo = Banco.input.nextLine();
-
-                System.out.print("Ingrese la descripcion del Articulo: ");
-                String description = Banco.input.nextLine();
-
-                Articulo articulo = new Articulo(valorArticulo, nombreArticulo, description);
-                articulos.add(articulo);
-                break;
-              case 2:
-                int eliminar = 0;
-                System.out.println(articulos);
-                System.out.print("Que Cliente Desea Eliminar: ");
-                eliminar = Banco.input.nextInt();
-                articulos.remove(eliminar);
-                break;
-            }
-            System.out.println(articulos);
-            break;
-          }while(AgregarArticulos<1||AgregarArticulos>2);
-          break;
-      }
-    }while(opcion<1||opcion>5);
+        }
+      } while (opcion < 1 || opcion > 5);
   }
 }

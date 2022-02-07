@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Cliente {
 
@@ -6,15 +7,33 @@ public class Cliente {
   private String paisCliente;
   private int cedula;
   private int numeroLocalizar;
+  //private ArrayList<Articulo> articulo;
 
-  ArrayList<Articulo> articulo = new ArrayList<Articulo>();
 
   public Cliente(String nombreCliente, String paisCliente, int cedula, int numeroLocalizar) {
     this.nombreCliente = nombreCliente;
     this.paisCliente = paisCliente;
     this.cedula = cedula;
     this.numeroLocalizar = numeroLocalizar;
+    //this.articulo = articulo;
   }
+  Scanner entrada = new Scanner(System.in);
+
+  public void agregarClientes(long l, ArrayList<Cliente> ClienteCuenta) {
+    System.out.print("Ingrese el Nombre del Cliente: ");
+    entrada.nextLine();
+    String nombreCliente = entrada.nextLine();
+
+    System.out.print("Ingrese el Pais del Cliente: ");
+    String paisCliente = entrada.nextLine();
+
+    System.out.print("Ingrese la Cedula del Cliente: ");
+    int cedula = entrada.nextInt();
+
+    System.out.print("Ingrese el Numero Localizador del Cliente: ");
+    int numeroLocalizar = entrada.nextInt();
+    ClienteCuenta.add(new Cliente(nombreCliente, paisCliente, cedula, numeroLocalizar));
+    }
 
   @Override
   public String toString() {
@@ -26,6 +45,13 @@ public class Cliente {
         '}';
   }
 
+//  public ArrayList<Articulo> getArticulo() {
+//    return articulo;
+//  }
+//
+//  public void setArticulo(ArrayList<Articulo> articulo) {
+//    this.articulo = articulo;
+//  }
 
   public String getNombreCliente() {
     return nombreCliente;

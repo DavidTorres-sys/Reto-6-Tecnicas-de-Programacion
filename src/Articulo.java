@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Articulo {
@@ -11,6 +13,7 @@ public class Articulo {
     this.nombreArticulo = nombreArticulo;
     this.description = description;
   }
+  Scanner input = new Scanner(System.in);
 
   @Override
   public String toString() {
@@ -19,6 +22,33 @@ public class Articulo {
         ", nombreArticulo='" + nombreArticulo + '\'' +
         ", description='" + description + '\'' +
         '}';
+  }
+
+  public void agregarArticulo(long l, ArrayList<Articulo> articuloCuenta) {
+    System.out.print("Ingrese el Valor del Articulo: ");
+    double valorArticulo = input.nextDouble();
+
+    System.out.print("Ingrese el Nombre del Articulo: ");
+    input.nextLine();
+    String nombreArticulo = input.nextLine();
+
+    System.out.print("Ingrese la descripcion del Articulo: ");
+    String description = input.nextLine();
+    articuloCuenta.add(new Articulo(valorArticulo, nombreArticulo, description));
+  }
+
+  public void eliminarArticulo(String i, ArrayList<Articulo> listaArticulo) {
+    boolean encontrado = false;
+    for ( int j = 0; j < listaArticulo.size(); j++){
+      if(Objects.equals(i, listaArticulo.get(j).getNombreArticulo())){
+        listaArticulo.remove(j);
+        encontrado = true;
+        System.out.println("El articulo con número " + i + " fue eliminada de nuestra plataforma!");
+      }
+    }
+    if(!encontrado){
+      System.out.println("El articulo" + i + " no se pudo eliminar porque no está en nuestra plataforma!");
+    }
   }
 
   public double getValorArticulo() {
