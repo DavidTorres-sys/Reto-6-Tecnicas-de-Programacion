@@ -23,6 +23,13 @@ public class Articulo {
         ", description='" + description + '\'' +
         '}';
   }
+  public void valorEstimadoCuenta(){
+    double valorTotal = 0;
+    System.out.print("El valor estimado de su cuenta es de: ");
+
+    valorTotal = valorArticulo + valorArticulo ;
+    System.out.println(valorTotal);
+  }
 
   public void agregarArticulo(long l, ArrayList<Articulo> articuloCuenta) {
     System.out.print("Ingrese el Valor del Articulo: ");

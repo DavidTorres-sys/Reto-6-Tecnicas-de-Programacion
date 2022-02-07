@@ -20,6 +20,9 @@ public class Main {
       do {
         System.out.println("1. Agregar/Quitar Clientes");
         System.out.println("2. Agregar/Quitar Articulos");
+        System.out.println("3. Ver Datos Clientes");
+        System.out.println("4. Ver el Valor Estimado de su Cuenta");
+        System.out.println("5. Ver Datos del Banco");
 
         System.out.print("Ingrese una Opcion: ");
         opcion = entrada.nextInt();
@@ -69,8 +72,14 @@ public class Main {
               }
               break;
             } while (AgregarArticulos < 1 || AgregarArticulos > 2);
+          case 3:
+            System.out.print("Numero de cedula: ");
+            cliente.verDatosClientes(entrada.nextInt(), clientes);
+            break;
+          case 4:
+            articulo.valorEstimadoCuenta();
             break;
         }
-      } while (opcion < 1 || opcion > 5);
+      } while (opcion <= 1 || opcion >= 5);
   }
 }

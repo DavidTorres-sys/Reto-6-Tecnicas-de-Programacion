@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Cliente {
@@ -7,7 +8,7 @@ public class Cliente {
   private String paisCliente;
   private int cedula;
   private int numeroLocalizar;
-  //private ArrayList<Articulo> articulo;
+  private ArrayList<Articulo> articulo;
 
 
   public Cliente(String nombreCliente, String paisCliente, int cedula, int numeroLocalizar) {
@@ -35,6 +36,19 @@ public class Cliente {
     ClienteCuenta.add(new Cliente(nombreCliente, paisCliente, cedula, numeroLocalizar));
     }
 
+  public void verDatosClientes(long i, ArrayList<Cliente> datosCliente) {
+    boolean encontrado = false;
+    for ( int j = 0; j < datosCliente.size(); j++){
+      if( i == datosCliente.get(j).getCedula()){
+        System.out.println(datosCliente.get(j).getCedula());
+        encontrado = true;
+      }
+    }
+    if(encontrado == false){
+      System.out.println("Su Cedula "+ i + " no está registrada en nuestra plataforma!");
+    }
+  }
+
   @Override
   public String toString() {
     return "Cliente{" +
@@ -44,14 +58,13 @@ public class Cliente {
         ", numeroLocalizar=" + numeroLocalizar +
         '}';
   }
+  public ArrayList<Articulo> getArticulo() {
+    return articulo;
+  }
 
-//  public ArrayList<Articulo> getArticulo() {
-//    return articulo;
-//  }
-//
-//  public void setArticulo(ArrayList<Articulo> articulo) {
-//    this.articulo = articulo;
-//  }
+  public void setArticulo(ArrayList<Articulo> articulo) {
+    this.articulo = articulo;
+  }
 
   public String getNombreCliente() {
     return nombreCliente;

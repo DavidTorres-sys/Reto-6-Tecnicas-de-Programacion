@@ -9,7 +9,6 @@ public class Banco {
   private int cedula;
   private long numeroCuenta;
   private int claveCuenta;
-//  private float saldoDisponible;
   private String paisTitular;
   private String tipoDocumento;
 
@@ -33,7 +32,12 @@ public class Banco {
 //        this.tipoDocumento = tipoDocumento;
 //    }
 
-
+  public void busquedaCliente() {
+    Hashtable<Integer, Cliente> hashCliente = new Hashtable<>();
+    System.out.print("Ingrese su clave: ");
+    int busqueda = entrada.nextInt();
+    hashCliente.get(busqueda);
+  }
   //CREAR CUENTA
 
   public Banco(){
@@ -77,9 +81,6 @@ public class Banco {
       if( i == listaCuentas.get(j).getNumeroCuenta()){
         System.out.println("Numero de Cuenta:");
         System.out.println(listaCuentas.get(j).getNumeroCuenta());
-        System.out.println("Nombre del titular:");
-        System.out.println(listaCuentas.get(j).getNombre());
-        System.out.println("Saldo en la cuenta:");
        // System.out.println(listaCuentas.get(j).getSaldoDisponible());
         encontrado = true;
       }
